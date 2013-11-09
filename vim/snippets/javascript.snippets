@@ -1,0 +1,117 @@
+# Self-executing function
+snippet self
+	/*global window, document, console, define, require*/
+	(function() {
+	 'use strict';
+
+	 ${1}
+
+	 })(this);
+# Define statement
+snippet def
+	define([
+			${1}
+			], function(${2}) {
+
+			${3}
+
+			});
+# Require statement
+snippet req
+	require([${1}], function(${2}) {
+
+			${3}
+
+			});
+# AMD module
+snippet mod
+	/*global window, document, console, define, require*/
+	(function() {
+	 'use strict';
+
+	 define([
+		 ${1}
+		 ], function(${2}) {
+
+		 ${3}
+
+		 });
+
+	 })(this);
+# spec module
+snippet spec
+	/*global window, document, console, define, require, describe, it, expect*/
+	(function() {
+	 'use strict';
+
+	 define([
+		 ${1}
+		 ], function(${2}) {
+
+		 describe(
+			 '${3:Description_of_spec}',
+			 function() {
+
+			 it(
+				 '${4:should_expect_something_to_happen}',
+				 function() {
+
+				 ${5}
+
+				 });
+
+			 });
+
+		 });
+
+	})(this);
+# spec describe
+snippet desc
+	describe(
+			'${1:Description_of_spec}',
+			function() {
+
+			it(
+				'${2:should_expect_something_to_happen}',
+				function() {
+
+				${3}
+				}
+
+				);
+
+			}
+			);
+# spec it
+snippet it
+	it(
+			'${1:should_expect_something_to_happen}',
+			function() {
+
+			${2}
+			}
+
+		);
+# for (...) {...}
+snippet for
+	for (var ${2:i} = 0, len = ${1:Things}.length; $2 < len; $2${3:++}) {
+		var ${5:obj} = ${4:$1[$2]};
+	}
+# for (...) {...} (Google Style Guide http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml?showone=Tips_and_Tricks#Tips_and_Tricks)
+snippet forrr
+	for (var ${2:i} = 0, ${1:item}; ($1 = ${3:items}[$2]); $2${4:++}) {
+		${5}
+	}
+# code
+snippet @cod
+	/**
+	 * ${1:Description_of_function}
+	 * @return {${2:Return_type}} ${3:comment}
+	 */
+# params
+snippet @par
+	/**
+	 * ${1:Description_of_function}
+	 * @param {${2:Param_type}} ${3:comment}
+	 * @return {${4:Return_type}} ${5:comment}
+	 */

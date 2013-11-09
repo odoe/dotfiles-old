@@ -33,7 +33,10 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'swaroopch/vim-markdown-preview'
 Bundle 'ervandew/supertab'
 Bundle 'timcharper/textile.vim'
-Bundle 'msanders/snipmate.vim'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle 'honza/vim-snippets'
 Bundle 'vim-scripts/Align'
 Bundle 'scrooloose/syntastic'
 Bundle 'ajf/puppet-vim'
@@ -47,7 +50,9 @@ Bundle 'vim-scripts/searchfold.vim'
 Bundle 'Lokaltog/vim-distinguished'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'endel/vim-github-colorscheme'
+Bundle 'morhetz/gruvbox'
 Bundle 'vim-scripts/Auto-Pairs'
+Bundle 'jnwhiteh/vim-golang'
 
 " vim-scripts repos
 Bundle 'L9'
@@ -83,8 +88,15 @@ set splitright
 set laststatus=2
 set timeout timeoutlen=1000 ttimeoutlen=100
 
+"golang
+"filetype off
+"filetype plugin indent off
+"set runtimepath+=$GOROOT/misc/vim
+"filetype plugin indent on
+"syntax on
+
 set background=light
-colorscheme github
+colorscheme desert
 if has("gui_running")
   set go-=T
   set guifont=M+_1mn_light_for_Powerline:h13
@@ -106,6 +118,8 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+"autocmd FileType go compiler go
 
 function! LightMode()
   colorscheme habiLight
