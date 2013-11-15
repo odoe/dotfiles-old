@@ -1,12 +1,12 @@
 # Self-executing function
-snippet self
-	/*global window, document, console, define, require*/
-	(function() {
+snippet mod
+	/*global window, document*/
+	!function() {
 	 'use strict';
 
 	 ${1}
 
-	 })(this);
+	 }();
 # Define statement
 snippet def
 	define([
@@ -24,7 +24,7 @@ snippet req
 
 			});
 # AMD module
-snippet mod
+snippet amd
 	/*global window, document, console, define, require*/
 	(function() {
 	 'use strict';
@@ -37,9 +37,9 @@ snippet mod
 
 		 });
 
-	 })(this);
+	 })();
 # spec module
-snippet spec
+snippet speca
 	/*global window, document, console, define, require, describe, it, expect*/
 	(function() {
 	 'use strict';
@@ -64,7 +64,34 @@ snippet spec
 
 		 });
 
-	})(this);
+	})();
+# spec module
+snippet spec
+	/*global window, document, console, define, require, describe, it, expect*/
+	!function() {
+	 'use strict';
+
+	 define([
+		 ${1}
+		 ], function(${2}) {
+
+		 describe(
+			 '${3:Description_of_spec}',
+			 function() {
+
+			 it(
+				 '${4:should_expect_something_to_happen}',
+				 function() {
+
+				 ${5}
+
+				 });
+
+			 });
+
+		 });
+
+	}();
 # spec describe
 snippet desc
 	describe(
@@ -74,10 +101,8 @@ snippet desc
 			it(
 				'${2:should_expect_something_to_happen}',
 				function() {
-
 				${3}
 				}
-
 				);
 
 			}
@@ -87,10 +112,8 @@ snippet it
 	it(
 			'${1:should_expect_something_to_happen}',
 			function() {
-
 			${2}
 			}
-
 		);
 # for (...) {...}
 snippet for
