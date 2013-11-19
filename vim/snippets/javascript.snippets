@@ -38,6 +38,97 @@ snippet amd
 		 });
 
 	 })();
+# dijit
+snippet dijit
+	  /*global define*/
+	  /*jshint laxcomma:true*/
+	  (function() {
+	    'use strict';
+	  define([
+	    'dojo/_base/declare',
+	    'dojo/_base/lang',
+	    'dojo/query',
+	    'dojo/topic',
+	    // Dijit stuff
+	    'dijit/_WidgetBase',
+	    'dijit/_TemplatedMixin',
+	    // template
+	    'text!widgets/${1}/${2}.tpl.html',
+	  ], function(
+		declare, lang,
+		topic, query,
+		_WidgetBase, _TemplatedMixin,
+		template
+		) {
+
+		function stopEvent(e) {
+		  e.preventDefault();
+		}
+
+		function head(t) {
+		  return t[0];
+		}
+
+		function val(t, name) {
+		  return t[name];
+		}
+
+		function domval(name) {
+		  return val(head(query(name)), 'value');
+		}
+	    return declare([_WidgetBase, _TemplatedMixin], {
+
+	      templateString: template,
+
+	      options: {},
+
+	      loaded: false,
+
+	      // lifecycle 1
+	      constructor: function(options, srcRefNode) {
+
+		// mix in settings and defaults
+		declare.safeMixin(this.options, options);
+
+		// widget node
+        if (srcRefNode) {
+          this.domNode = srcRefNode;
+          this.hasDomRef = true;
+        }
+
+        this.set('map', this.options.map);
+
+	      },
+
+	      // start widget
+	      startup: function() {
+		this._init();
+	      },
+		  
+		  postCreate: function() {
+			if (!this.hasDomRef) {
+			  document.body.insertBefore(this.domNode, document.body.firstChild);
+			}
+
+			this.own();
+		  },
+
+	      // cleanup
+	      destroy: function() {
+		this.inherited(arguments);
+	      },
+
+	      // widget methods
+
+	      // private functions
+	      _init: function() {
+		this.set('loaded', true);
+	      }
+
+	    });
+
+	  });
+	})();
 # spec module
 snippet speca
 	/*global window, document, console, define, require, describe, it, expect*/
