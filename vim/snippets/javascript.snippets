@@ -26,8 +26,7 @@ snippet req
 # AMD module
 snippet amd
 	/*global window, document, console, define, require*/
-	(function() {
-	 'use strict';
+	function() {
 
 	 define([
 		 ${1}
@@ -128,11 +127,11 @@ snippet dijit
 	    });
 
 	  });
-	})();
+	};
 # spec module
 snippet speca
 	/*global window, document, console, define, require, describe, it, expect*/
-	(function() {
+	function() {
 	 'use strict';
 
 	 define([
@@ -155,7 +154,7 @@ snippet speca
 
 		 });
 
-	})();
+	};
 # spec module
 snippet spec
 	/*global window, document, console, define, require, describe, it, expect*/
