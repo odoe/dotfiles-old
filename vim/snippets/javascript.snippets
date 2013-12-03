@@ -26,23 +26,19 @@ snippet req
 # AMD module
 snippet amd
 	/*global window, document, console, define, require*/
-	function() {
-
 	 define([
 		 ${1}
 		 ], function(${2}) {
+		 
+		 'use strict';
 
 		 ${3}
 
 		 });
-
-	 };
 # dijit
 snippet dijit
 	  /*global define*/
 	  /*jshint laxcomma:true*/
-	  function() {
-	  
 	  define([
 	    'dojo/_base/declare',
 	    'dojo/_base/lang',
@@ -59,6 +55,8 @@ snippet dijit
 		_WidgetBase, _TemplatedMixin,
 		template
 		) {
+		
+		'use strict';
 
 		function stopEvent(e) {
 		  e.preventDefault();
@@ -127,13 +125,9 @@ snippet dijit
 	    });
 
 	  });
-	};
 # spec module
 snippet speca
 	/*global window, document, console, define, require, describe, it, expect*/
-	function() {
-	 'use strict';
-
 	 define([
 		 ${1}
 		 ], function(${2}) {
@@ -153,8 +147,6 @@ snippet speca
 			 });
 
 		 });
-
-	};
 # spec module
 snippet spec
 	/*global window, document, console, define, require, describe, it, expect*/
