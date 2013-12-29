@@ -125,7 +125,7 @@ snippet dijit
 	  });
 # spec module
 snippet speca
-	/*global window, document, console, define, require, describe, it, expect*/
+	/*global define, describe, it, expect, beforeEach, afterEach, sinon*/
 	 define([
 		 ${1}
 		 ], function(${2}) {
@@ -133,7 +133,8 @@ snippet speca
 		 describe(
 			 '${3:Description_of_spec}',
 			 function() {
-
+			beforeEach(function() {});
+			afterEach(function() {});
 			 it(
 				 '${4:should_expect_something_to_happen}',
 				 function() {
@@ -151,21 +152,15 @@ snippet spec
 	!function() {
 	 'use strict';
 
-	 define([
-		 ${1}
-		 ], function(${2}) {
+	 describe(
+		 '${1:Description_of_spec}',
+		 function() {
 
-		 describe(
-			 '${3:Description_of_spec}',
+		 it(
+			 '${2:should_expect_something_to_happen}',
 			 function() {
 
-			 it(
-				 '${4:should_expect_something_to_happen}',
-				 function() {
-
-				 ${5}
-
-				 });
+			 ${3}
 
 			 });
 
