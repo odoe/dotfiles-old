@@ -26,6 +26,7 @@ Bundle 'tpope/vim-vividchalk'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-vinegar'
 Bundle 'jgdavey/vim-turbux'
 
 Bundle 'michaeljsmith/vim-indent-object'
@@ -96,10 +97,11 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 "syntax on
 
 set background=light
-colorscheme desert
+colorscheme github
 if has("gui_running")
   set go-=T
-  set guifont=M+_1mn_light_for_Powerline:h13
+  "set guifont=M+_1mn_light_for_Powerline:h8
+  set guifont=Clean:h10:cASNI
   set noballooneval
 else
   set mouse=a
@@ -123,7 +125,7 @@ autocmd BufWinLeave * call clearmatches()
 
 function! LightMode()
   colorscheme habiLight
-  set guifont=Monaco:h13
+  set guifont=Monaco:h8
 endfunc
 
 """ FocusMode

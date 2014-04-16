@@ -37,90 +37,48 @@ snippet amd
 		 });
 # dijit
 snippet dijit
-	  /*global define*/
-	  /*jshint strict:false, laxcomma:true*/
-	  define([
-	    'dojo/_base/declare',
-	    'dojo/_base/lang',
-	    'dojo/query',
-	    'dojo/topic',
-	    // Dijit stuff
-	    'dijit/_WidgetBase',
-	    'dijit/_TemplatedMixin',
-	    // template
-	    'text!widgets/${1}/${2}.tpl.html',
-	  ], function(
-		declare, lang,
-		topic, query,
-		_WidgetBase, _TemplatedMixin,
-		template
-		) {
+	/*global define*/
+	define([
+	  'dojo/_base/declare',
+	  'dojo/_base/lang',
+	  'dojo/on',
+	  'dojo/topic',
+	  //dijit
+	  'dijit/_WidgetBase',
+	  'dijit/_TemplatedMixin'
+	], function(
+	  declare, lang,
+	  on, topic,
+	  _WidgetBase, _TemplatedMixin
+	) {
 
-		function stopEvent(e) {
-		  e.preventDefault();
-		}
+	  'use strict';
 
-		function head(t) {
-		  return t[0];
-		}
+	  return declare([
+	    _WidgetBase, _TemplatedMixin
+	  ], {
+	    templateString: '',
+	    constructor: function(options) {
+	      this.options = options || {};
+	      this.set('map', this.options.map);
+	    },
 
-		function val(t, name) {
-		  return t[name];
-		}
-
-		function domval(name) {
-		  return val(head(query(name)), 'value');
-		}
-	    return declare([_WidgetBase, _TemplatedMixin], {
-
-	      templateString: template,
-
-	      options: {},
-
-	      loaded: false,
-
-	      // lifecycle 1
-	      constructor: function(options, srcRefNode) {
-
-		// mix in settings and defaults
-		declare.safeMixin(this.options, options);
-
-		// widget node
-        if (srcRefNode) {
-          this.domNode = srcRefNode;
-          this.hasDomRef = true;
-        }
-
-        this.set('map', this.options.map);
-
-	      },
-
-	      // start widget
-	      startup: function() {
-		this._init();
-	      },
-		  
-		  postCreate: function() {
-			if (!this.hasDomRef) {
-			  document.body.insertBefore(this.domNode, document.body.firstChild);
-			}
-
-			this.own();
-		  },
-
-	      // cleanup
-	      destroy: function() {
-		this.inherited(arguments);
-	      },
-
-	      // widget methods
-
-	      // private functions
-	      _init: function() {
-		this.set('loaded', true);
+	    startup: function() {
+	      if (!this.get('map')) {
+		this.destroy();
 	      }
 
-	    });
+	      if (this.get('map').loaded) {
+		this._init();
+	      }, else {
+		on.once(this.get('map'), 'load', lang.hitch(this, '_init'));
+	      }
+	    },
+
+	    _init: function() {
+	      this.set('loaded', true),
+	      this.emit('load', {});
+	    }
 
 	  });
 # spec module
