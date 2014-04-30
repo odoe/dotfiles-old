@@ -54,6 +54,7 @@ Bundle 'endel/vim-github-colorscheme'
 Bundle 'morhetz/gruvbox'
 Bundle 'vim-scripts/Auto-Pairs'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'mxw/vim-jsx'
 
 " vim-scripts repos
 Bundle 'L9'
