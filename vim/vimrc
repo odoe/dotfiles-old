@@ -28,6 +28,7 @@ Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-vinegar'
 Bundle 'jgdavey/vim-turbux'
+Bundle 'groenewege/vim-less'
 
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'pangloss/vim-javascript'
@@ -55,6 +56,7 @@ Bundle 'morhetz/gruvbox'
 Bundle 'vim-scripts/Auto-Pairs'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'mxw/vim-jsx'
+Bundle 'elixir-lang/vim-elixir'
 
 " vim-scripts repos
 Bundle 'L9'
