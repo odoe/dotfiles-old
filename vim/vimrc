@@ -9,61 +9,67 @@ set nocompatible
 " load the plugin and indent settings for the detected filetype
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " Let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 "My Bundles here
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-vividchalk'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-vinegar'
-Bundle 'jgdavey/vim-turbux'
-Bundle 'groenewege/vim-less'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-vividchalk'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-vinegar'
+Plugin 'jgdavey/vim-turbux'
+Plugin 'groenewege/vim-less'
 
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'pangloss/vim-javascript'
-Bundle 'swaroopch/vim-markdown-preview'
-Bundle 'ervandew/supertab'
-Bundle 'timcharper/textile.vim'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle 'honza/vim-snippets'
-Bundle 'vim-scripts/Align'
-Bundle 'scrooloose/syntastic'
-Bundle 'ajf/puppet-vim'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'mattn/gist-vim'
-Bundle 'mattn/zencoding-vim'
-Bundle 'godlygeek/tabular'
-Bundle 'Townk/vim-autoclose'
-Bundle 'maksimr/vim-jsbeautify'
-Bundle 'vim-scripts/searchfold.vim'
-Bundle 'Lokaltog/vim-distinguished'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'endel/vim-github-colorscheme'
-Bundle 'morhetz/gruvbox'
-Bundle 'vim-scripts/Auto-Pairs'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'mxw/vim-jsx'
-Bundle 'elixir-lang/vim-elixir'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'pangloss/vim-javascript'
+Plugin 'swaroopch/vim-markdown-preview'
+Plugin 'ervandew/supertab'
+Plugin 'timcharper/textile.vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'vim-scripts/Align'
+Plugin 'scrooloose/syntastic'
+Plugin 'ajf/puppet-vim'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'godlygeek/tabular'
+Plugin 'Townk/vim-autoclose'
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'vim-scripts/searchfold.vim'
+Plugin 'Lokaltog/vim-distinguished'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'endel/vim-github-colorscheme'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'noahfrederick/vim-hemisu'
+Plugin 'morhetz/gruvbox'
+Plugin 'vim-scripts/Auto-Pairs'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'mxw/vim-jsx'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'raichoo/purescript-vim'
+Plugin 'lambdatoast/elm.vim'
 
 " vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
 
 " non github repos
-Bundle 'git://git.wincent.com/command-t.git'
+Plugin 'git://git.wincent.com/command-t.git'
+
+call vundle#end()
 
 syntax enable
 filetype plugin indent on
@@ -99,12 +105,16 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 "filetype plugin indent on
 "syntax on
 
-set background=light
-colorscheme github
+set background=dark
+"let g:solarized_termcolor=256
+colorscheme distinguished
+highlight LineNr ctermfg=Red
+highlight Comment ctermfg=LightMagenta
 if has("gui_running")
   set go-=T
   "set guifont=M+_1mn_light_for_Powerline:h8
-  set guifont=Clean:h10:cASNI
+  "set guifont=ProggyCleanTT:h12:cASNI
+  "set guifont=M+_1mn_light:h18
   set noballooneval
 else
   set mouse=a
@@ -127,7 +137,7 @@ autocmd BufWinLeave * call clearmatches()
 "autocmd FileType go compiler go
 
 function! LightMode()
-  colorscheme habiLight
+  "colorscheme habiLight
   set guifont=Monaco:h8
 endfunc
 
@@ -149,7 +159,7 @@ function! ToggleFocusMode()
     set numberwidth=4
     set foldcolumn=0
     set ruler
-    execute 'colorscheme ' . g:colors_name
+    "execute 'colorscheme ' . g:colors_name
   endif
 endfunc
 nnoremap <F1> :call ToggleFocusMode()<cr>
@@ -160,6 +170,13 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
+
+"PureScript variables
+let g:purescript_indent_if = 3
+let g:purescript_indent_case = 5
+let g:purescript_indent_let = 4
+let g:purescript_indent_where = 6
+let g:purescript_indent_do = 3
 
 inoremap <expr><TAB>  pumvisible() ? "<C-n>" : "<TAB>"
 map <leader>gu :GundoToggle<CR>

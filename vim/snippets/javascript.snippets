@@ -29,7 +29,7 @@ snippet amd
 	 define([
 		 ${1}
 		 ], function(${2}) {
-		 
+
 		 'use strict';
 
 		 ${3}
@@ -81,6 +81,22 @@ snippet dijit
 	    }
 
 	  });
+#jsx
+snippet jsx
+	/** @jsx React.DOM */
+	/*jshint ignore:start */
+
+	/*jshint ignore:end */
+#reactclass
+snippet rcl
+	React.createClass({
+	  render: function() {}
+	});
+#reactrendercomponent
+snippet rcc
+	React.renderComponent(
+	  ${1}
+	);
 # spec module
 snippet speca
 	/*global define, describe, it, expect, beforeEach, afterEach, sinon*/

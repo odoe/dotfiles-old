@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/odoe/Documents/dev/om-tut'
-let g:netrw_dirhist_2='/home/odoe/Documents/dev/om-tut/src'
-let g:netrw_dirhist_3='/home/odoe/Documents/dev/om-tut/src/om_tut'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/odoe/Documents/dev/clj/cljs-workshop'
+let g:netrw_dirhist_2='/home/odoe/Documents/dev/clj/cljs-workshop/src'
+let g:netrw_dirhist_3='/home/odoe/Documents/dev/clj/cljs-workshop/src/cljs'
+let g:netrw_dirhist_4='/home/odoe/Documents/dev/clj/cljs-workshop/src/cljs/cljsworkshop'
+let g:netrw_dirhist_5='/home/odoe/Documents/dev/clj/cljs-workshop/src/cljs'
+let g:netrw_dirhist_6='/home/odoe/dotfiles/vim'
